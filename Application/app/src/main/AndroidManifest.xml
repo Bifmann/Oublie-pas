@@ -21,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NouvelObjectif" />
+        <activity android:name=".Objectif" />
+        <activity android:name=".ModifierObjectif" />
+        <activity android:name=".Parametres" />
     </application>
-
 </manifest>

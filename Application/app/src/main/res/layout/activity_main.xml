@@ -26,7 +26,7 @@
         android:layout_marginBottom="8dp"
         android:text="Trier"
         app:cornerRadius="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/RecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -59,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/RecyclerView"
         android:layout_width="0dp"
         android:layout_height="446dp"
         android:layout_marginBottom="8dp"

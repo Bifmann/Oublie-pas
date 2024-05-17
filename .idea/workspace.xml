@@ -5,55 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d154e93-dd40-467b-a259-709cb2a69670" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/~$ssier de projet oublie pas.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/~WRL3145.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/.idea/migrations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/androidTest/java/com/example/oublie_pas/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/java/com/example/oublie_pas/MainActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/java/com/example/oublie_pas/ui/theme/Color.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/java/com/example/oublie_pas/ui/theme/Theme.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/java/com/example/oublie_pas/ui/theme/Type.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/values/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/xml/backup_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/app/src/test/java/com/example/oublie_pas/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OubliePas/settings.gradle.kts" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/app/src/main/java/com/example/oublie_pas/Notification.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/app/src/main/java/com/example/oublie_pas/NotificationHelper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Application/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/app/src/main/java/com/example/oublie_pas/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Application/app/src/main/java/com/example/oublie_pas/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/app/src/main/java/com/example/oublie_pas/NavigationHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Application/app/src/main/java/com/example/oublie_pas/NavigationHandler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Application/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documentation/Journal_de_travail_VMW.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation/Journal_de_travail_VMW.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documentation/PDF/Dossier de projet.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation/PDF/Dossier de projet.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documentation/PDF/Journal de travail.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation/PDF/Journal de travail.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,10 +35,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true"
+    "cidr.known.project.marker": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/pt63nch/Documents/GitHub/Oublie pas/Application"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

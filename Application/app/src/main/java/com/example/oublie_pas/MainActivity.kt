@@ -6,6 +6,8 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+
+
 class MainActivity : AppCompatActivity(), RecyclerViewEvent {
 
     private lateinit var navigationHandler: NavigationHandler
@@ -34,4 +36,6 @@ class MainActivity : AppCompatActivity(), RecyclerViewEvent {
         navigationHandler.setupButtonNavigation(buttonNouvelObjectif, NouvelObjectif::class.java)
         navigationHandler.setupButtonNavigation(buttonParametres, Parametres::class.java)
     }
+
+
 }

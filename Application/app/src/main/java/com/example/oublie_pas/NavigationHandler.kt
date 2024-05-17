@@ -25,5 +25,4 @@ class NavigationHandler(private val context: Context) {
         // Démarre l'activité spécifiée.
         context.startActivity(intent)
     }
-
 }

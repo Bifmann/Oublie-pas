@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ModifierObjectif : AppCompatActivity(), OnButtonClickListener {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modifierobjectif)
@@ -21,9 +22,12 @@ class ModifierObjectif : AppCompatActivity(), OnButtonClickListener {
 
     private fun setupRecyclerView() {
         val recyclerView: RecyclerView = findViewById(R.id.RecyclerViewCategorie)
-        recyclerView.adapter = RecycleurAdapterCategorie(this)
+
+        recyclerView.adapter = RecycleurAdapterCategorie(this, applicationContext)
+
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
+
 
     private fun setupButtons() {
         val navigationHandler = NavigationHandler(this)
@@ -35,4 +39,3 @@ class ModifierObjectif : AppCompatActivity(), OnButtonClickListener {
     }
 
 }
-

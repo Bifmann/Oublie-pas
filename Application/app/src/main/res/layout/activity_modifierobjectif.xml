@@ -145,7 +145,8 @@
         android:layout_marginBottom="16dp"
         android:text="Date de création : 1/1/2000"
         app:layout_constraintBottom_toTopOf="@+id/Button_Sauvegarder"
-        tools:layout_editor_absoluteX="119dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

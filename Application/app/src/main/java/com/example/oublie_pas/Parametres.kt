@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class Parametres : AppCompatActivity() , OnButtonClickListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parametres)
@@ -20,7 +21,8 @@ class Parametres : AppCompatActivity() , OnButtonClickListener {
 
     private fun setupRecyclerView() {
         val recyclerView: RecyclerView = findViewById(R.id.RecyclerViewCategorie)
-        recyclerView.adapter = RecycleurAdapterCategorie(this)
+
+        recyclerView.adapter = RecycleurAdapterCategorie(this, applicationContext)
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 

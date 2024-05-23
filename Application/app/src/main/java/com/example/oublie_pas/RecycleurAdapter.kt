@@ -3,20 +3,27 @@ package com.example.oublie_pas
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class RecycleurAdapter(
-    private val listener: RecyclerViewEvent // L'interface pour gérer les clics
+    private val listener: RecyclerViewEvent,
+    private val liste: List<RoomEntity>
 ) : RecyclerView.Adapter<RecycleurAdapter.ItemViewHolder>() {
 
     // ViewHolder qui contient la référence à la vue de chaque élément de la liste
     inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         val objectifName: TextView = view.findViewById(R.id.textview_Titre) // Référence au TextView
+        val dateText: TextView = view.findViewById(R.id.textview_Date) // Référence au TextView pour la date
+        val button: Button = view.findViewById(R.id.button) // Référence au Button
 
         init {
             view.setOnClickListener(this) // Définir le gestionnaire de clic pour la vue du ViewHolder
+            button.setOnClickListener(this) // Définir le gestionnaire de clic pour le bouton
         }
 
         override fun onClick(v: View?) {
@@ -35,13 +42,18 @@ class RecycleurAdapter(
 
     // Associer les données avec le ViewHolder à une position spécifique
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        // TODO: Ajouter les données à l'affichage
+        val item = liste[position]
+        holder.objectifName.text = item.titre
+        holder.dateText.text = item.dateInMillis.toString()
+
+        val date = Date(item.dateInMillis)
+        val format = SimpleDateFormat("d/M/yyyy", Locale.getDefault())
+        holder.dateText.text = format.format(date)
     }
 
     // Obtenir la taille de la liste des données
     override fun getItemCount(): Int {
-        // TODO: Retourner la taille de la liste des données
-        return 0 // Temporairement mis à 0 jusqu'à ce que TODO soit complété
+        return liste.size
     }
 }
 

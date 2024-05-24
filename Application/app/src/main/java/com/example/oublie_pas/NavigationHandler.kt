@@ -2,27 +2,39 @@ package com.example.oublie_pas
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 
-
-// Définition de la classe NavigationHandler pour gérer la navigation entre les activités de l'application.
 class NavigationHandler(private val context: Context) {
 
-    // Méthode pour configurer la navigation à partir d'un bouton vers une activité spécifiée.
     fun setupButtonNavigation(button: Button, destinationClass: Class<*>) {
-        // Définit un écouteur d'événements de clic sur le bouton.
         button.setOnClickListener {
-            // Crée une intention pour démarrer l'activité de destination.
             val intent = Intent(context, destinationClass)
-            // Démarre l'activité spécifiée.
+            if (context !is AppCompatActivity) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
             context.startActivity(intent)
         }
     }
 
-    fun goTo(destinationClass: Class<*>){
-        // Crée une intention pour démarrer l'activité de destination.
+    fun goTo(destinationClass: Class<*>) {
         val intent = Intent(context, destinationClass)
-        // Démarre l'activité spécifiée.
+        if (context !is AppCompatActivity) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        context.startActivity(intent)
+    }
+
+    fun goToModification(position: Int) {
+        Log.d("NavigationHandler", "Navigating to ModifierObjectif with ID: $position")
+        val intent = Intent(context, ModifierObjectif::class.java).apply {
+            putExtra("ID_OBJECTIF", position)
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            if (context !is AppCompatActivity) {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+        }
         context.startActivity(intent)
     }
 }

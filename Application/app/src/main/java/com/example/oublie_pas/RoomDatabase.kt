@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 
-@Database(entities = [RoomEntity::class], version = 2) // Augmentez la version de la base de données
+@Database(entities = [RoomEntity::class], version = 3) // Augmentez la version de la base de données
 @TypeConverters(AppDatabase.Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun roomDao(): RoomDao

@@ -10,6 +10,7 @@ data class RoomEntity(
     val description: String,
     val toggleRappel: Boolean,
     val dateInMillis: Long,
-    val status: String,
-    val tags: List<String>
+    var status: String,
+    val tags: List<String>,
+    val creationDateInMillis: Long,
 )

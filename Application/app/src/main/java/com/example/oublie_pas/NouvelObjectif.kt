@@ -55,6 +55,8 @@ class NouvelObjectif : AppCompatActivity(), OnButtonClickListener {
         val desc: String = findViewById<EditText>(R.id.editText_Description).text.toString()
         val time: String = findViewById<EditText>(R.id.editText_DateHeure).text.toString()
         val timeInMillis: Long = getTimeInMillisFromString(time)
+
+
         //TODO "si format pas juste mettre un warning"
 
         //TODO "if bouton rouge ne pas mettre de rappel"
@@ -66,7 +68,8 @@ class NouvelObjectif : AppCompatActivity(), OnButtonClickListener {
             toggleRappel = true,
             dateInMillis = timeInMillis,
             status = "active",
-            tags = listOf("Joshua", "deuxième joshua")
+            tags = listOf("Joshua", "deuxième joshua"),
+            creationDateInMillis = System.currentTimeMillis()
         )
 
         withContext(Dispatchers.IO) {
@@ -82,7 +85,7 @@ class NouvelObjectif : AppCompatActivity(), OnButtonClickListener {
                 id = data.id,
                 title = data.titre,
                 content = data.description,
-                timeInMillis = System.currentTimeMillis() + 5000,
+                timeInMillis = data.dateInMillis,
                 applicationContext
             )
         }

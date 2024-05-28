@@ -3,6 +3,7 @@ package com.example.oublie_pas
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,14 +29,51 @@ class RecycleurAdapter(
         val objectifName: TextView = view.findViewById(R.id.textview_Titre) // Référence au TextView
         val dateText: TextView = view.findViewById(R.id.textview_Date) // Référence au TextView pour la date
         val button: Button = view.findViewById(R.id.button) // Référence au Button
+        val notificationHelper = NotificationHelper(context)
 
         init {
             view.setOnClickListener(this) // Définir le gestionnaire de clic pour la vue du ViewHolder
-            button.setOnClickListener {
-                // Définir un gestionnaire de clic séparé pour le bouton
+            button.setOnClickListener { buttonView ->
+                // Log message for button click
+                Log.d("RecycleurAdapter", "Button clicked at position: $adapterPosition")
+
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    listener.onItemClick(position)
+                    val item = liste[position]
+                    // Log message for item status
+                    Log.d("RecycleurAdapter", "Current status: ${item.status}")
+                    // Logique pour changer le statut de l'élément
+                    if (item.status == "actif" || item.status == "urgent") {
+                        item.status = "no notif"
+                        Log.d("RecycleurAdapter", "Status changed to no notif")
+                        notificationHelper.unscheduleNotification(item.id)
+                        Log.d("RecycleurAdapter", "Notification unscheduled for item id: ${item.id}")
+                    } else if (item.status == "no notif") {
+                        item.status = "actif"
+                        Log.d("RecycleurAdapter", "Status changed to actif")
+                        notificationHelper.scheduleNotification(
+                            id = item.id,
+                            title = item.titre,
+                            content = item.description,
+                            timeInMillis = item.dateInMillis,
+                            context
+                        )
+                        Log.d("RecycleurAdapter", "Notification scheduled for item id: ${item.id}")
+                    }
+
+                    // Mettre à jour l'élément dans la base de données et notifier l'adaptateur
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val database = AppDatabase.getDatabase(context)
+                        database.roomDao().updateRoom(item)
+                        withContext(Dispatchers.Main) {
+                            notifyItemChanged(position)
+                            // Log message for notifying item change
+                            Log.d("RecycleurAdapter", "Item changed at position: $position")
+                        }
+                    }
+                } else {
+                    // Log message if position is not valid
+                    Log.d("RecycleurAdapter", "Invalid position: $position")
                 }
             }
         }
@@ -66,7 +104,6 @@ class RecycleurAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = liste[position]
         holder.objectifName.text = item.titre
-        holder.dateText.text = item.dateInMillis.toString()
 
         val date = Date(item.dateInMillis)
         val format = SimpleDateFormat("d/M/yyyy", Locale.getDefault())
@@ -89,28 +126,22 @@ class RecycleurAdapter(
         return liste.size
     }
 
-    private suspend fun editStatus(item: RoomEntity) {
+    private suspend fun editStatus(item: RoomEntity): String {
         val currentDateInMillis = System.currentTimeMillis()
         val oneDayInMillis = 86400000
-        val status: String
+        var status = item.status // Utiliser la variable `var` pour permettre la modification
 
-        if (item.dateInMillis >= currentDateInMillis) {
-            // L'élément est dans le futur ou maintenant
-            status = "actif"
-        } else {
-            // L'élément est dans le passé
-            status = if (item.status == "actif" || item.status == "urgent" || item.status == "done") {
-                if (item.dateInMillis >= (currentDateInMillis - oneDayInMillis)) {
-                    // Moins d'un jour de retard
-                    "urgent"
-                } else {
-                    // Plus d'un jour de retard
-                    "done"
+        if (item.status != "no notif") {
+            if (item.dateInMillis >= currentDateInMillis) {
+                // L'élément est dans le futur ou maintenant
+                status = "actif"
+                if (item.dateInMillis <= (currentDateInMillis + oneDayInMillis)) {
+                    // Moins d'un jour avant l'alarme
+                    status = "urgent"
                 }
             } else {
-                // Statut n'est pas "actif" ou "urgent"
-                "no notif"
-                // TODO: Implémenter la logique pour retirer l'élément du système de notification
+                // L'élément est dans le passé
+                status = "done"
             }
         }
 
@@ -119,7 +150,10 @@ class RecycleurAdapter(
             item.status = status
             database.roomDao().updateRoom(item)
         }
+
+        return status
     }
+
 }
 
 // Interface pour gérer les événements de clic sur les éléments du RecyclerView

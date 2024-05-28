@@ -85,10 +85,22 @@ class MainActivity : AppCompatActivity(), RecyclerViewEvent {
 
     private fun sortByStatus() {
         lifecycleScope.launch {
-            val data = getData().sortedBy { it.status }
+            val data = getData().sortedBy { getStatusPriority(it.status) }
             (recyclerView.adapter as RecycleurAdapter).updateData(data)
         }
     }
+
+
+    private fun getStatusPriority(status: String): Int {
+        return when (status) {
+            "urgent" -> 1
+            "actif" -> 2
+            "done" -> 3
+            "no notif" -> 4
+            else -> 5
+        }
+    }
+
 
     private suspend fun getData(): List<RoomEntity> {
         val database = AppDatabase.getDatabase(this)

@@ -5,12 +5,8 @@ import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.app.TaskStackBuilder
 import android.content.Context
 import android.content.Intent
-import android.os.Build
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 
 class NotificationHelper(private val context: Context) {
 
@@ -54,6 +50,7 @@ class NotificationHelper(private val context: Context) {
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.cancel(pendingIntent)
+
     }
 
     private fun createNotificationChannel() {

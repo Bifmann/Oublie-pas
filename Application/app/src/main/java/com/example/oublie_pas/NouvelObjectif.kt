@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,8 @@ import kotlin.coroutines.resume
 class NouvelObjectif : AppCompatActivity(), OnButtonClickListener {
 
     private val database by lazy { AppDatabase.getDatabase(this) }
+    private var Notif: Boolean = true
+    private var StatusNotif : String = "actif"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,12 +44,27 @@ class NouvelObjectif : AppCompatActivity(), OnButtonClickListener {
     private fun setupButtons() {
         val navigationHandler = NavigationHandler(this)
         val buttonSauvegarder: Button = findViewById(R.id.Button_Sauvegarder)
+        val buttonToggleButton: Button = findViewById(R.id.button_Rappel)
+
         buttonSauvegarder.setOnClickListener {
             lifecycleScope.launch {
                 addObjectif()
                 addNotification()
                 navigationHandler.goTo(MainActivity::class.java)
             }
+        }
+        buttonToggleButton.setOnClickListener {
+            if (Notif) {
+                StatusNotif = "no notif"
+                Notif = false
+                Notif = false
+                buttonToggleButton.backgroundTintList = ContextCompat.getColorStateList(this, R.color.red)
+            } else {
+                StatusNotif = "actif"
+                Notif = true
+                buttonToggleButton.backgroundTintList = ContextCompat.getColorStateList(this, R.color.design_default_color_primary)
+            }
+            println(Notif)
         }
     }
 
@@ -58,16 +76,14 @@ class NouvelObjectif : AppCompatActivity(), OnButtonClickListener {
 
 
         //TODO "si format pas juste mettre un warning"
-
-        //TODO "if bouton rouge ne pas mettre de rappel"
         //TODO "si RecyclerView cliqué, ajouter à la liste des tags"
 
         val newRoom = RoomEntity(
             titre = titre,
             description = desc,
-            toggleRappel = true,
+            toggleRappel = Notif,
             dateInMillis = timeInMillis,
-            status = "active",
+            status = StatusNotif,
             tags = listOf("Joshua", "deuxième joshua"),
             creationDateInMillis = System.currentTimeMillis()
         )

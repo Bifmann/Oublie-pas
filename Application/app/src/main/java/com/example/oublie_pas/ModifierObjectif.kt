@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +24,10 @@ class ModifierObjectif : AppCompatActivity(), OnButtonClickListener {
     private lateinit var editTextDateHeure: EditText
     private lateinit var buttonSauvegarder: Button
     private lateinit var buttonDelete: Button
+    private lateinit var buttonToggleButton: Button
     private var navigationHandler = NavigationHandler(this)
+    private var Notif: Boolean = true
+    private var StatusNotif: String = "actif"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +39,7 @@ class ModifierObjectif : AppCompatActivity(), OnButtonClickListener {
         editTextDateHeure = findViewById(R.id.editText_DateHeure)
         buttonSauvegarder = findViewById(R.id.Button_Sauvegarder)
         buttonDelete = findViewById(R.id.Button_Delete)
-
+        buttonToggleButton = findViewById(R.id.button_Rappel)
 
         setupRecyclerView()
         setupButtons()
@@ -44,6 +48,7 @@ class ModifierObjectif : AppCompatActivity(), OnButtonClickListener {
         lifecycleScope.launch {
             remplissageChamp()
         }
+        println(id)
     }
 
     override fun onButtonClick(position: Int) {
@@ -69,6 +74,20 @@ class ModifierObjectif : AppCompatActivity(), OnButtonClickListener {
                 navigationHandler.goTo(MainActivity::class.java)
             }
         }
+        buttonToggleButton.setOnClickListener {
+            if (Notif) {
+                StatusNotif = "no notif"
+                Notif = false
+                buttonToggleButton.backgroundTintList = ContextCompat.getColorStateList(this, R.color.red)
+            } else {
+                StatusNotif = "actif"
+                Notif = true
+                buttonToggleButton.backgroundTintList = ContextCompat.getColorStateList(this, R.color.design_default_color_primary)
+            }
+            println(Notif)
+        }
+
+
     }
 
     fun dateMillisToString(millis: Long): String {
@@ -101,13 +120,15 @@ class ModifierObjectif : AppCompatActivity(), OnButtonClickListener {
         val dateInMillis = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).parse(editTextDateHeure.text.toString()).time
         val creationDateInMillis = data!!.creationDateInMillis
 
+
+
         val room = RoomEntity(
             id = id,
             titre = titre,
             description = description,
-            true,
+            Notif,
             dateInMillis = dateInMillis,
-            status = "No",
+            status = StatusNotif,
             tags = listOf("Joshua", "deuxième joshua"),
             creationDateInMillis = creationDateInMillis
         )

@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:windowSoftInputMode="adjustPan">
+
 
     <Button
         android:id="@+id/Button_Sauvegarder"
@@ -126,7 +128,7 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.552"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/button_Rappel"
         app:layout_constraintTop_toBottomOf="@+id/textView_DateHeure" />
 
     <TextView
@@ -142,9 +144,10 @@
         app:layout_constraintTop_toBottomOf="@+id/editText_Description" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_Rappel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/design_default_color_primary"
         android:text="Rappel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.074"

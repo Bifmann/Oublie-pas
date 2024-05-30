@@ -49,7 +49,7 @@ class NouvelObjectif : AppCompatActivity(), OnButtonClickListener {
         buttonSauvegarder.setOnClickListener {
             lifecycleScope.launch {
                 addObjectif()
-                addNotification()
+                if(Notif)addNotification()
                 navigationHandler.goTo(MainActivity::class.java)
             }
         }
@@ -73,7 +73,6 @@ class NouvelObjectif : AppCompatActivity(), OnButtonClickListener {
         val desc: String = findViewById<EditText>(R.id.editText_Description).text.toString()
         val time: String = findViewById<EditText>(R.id.editText_DateHeure).text.toString()
         val timeInMillis: Long = getTimeInMillisFromString(time)
-
 
         //TODO "si format pas juste mettre un warning"
         //TODO "si RecyclerView cliqué, ajouter à la liste des tags"

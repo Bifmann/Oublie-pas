@@ -3,6 +3,7 @@ package com.example.oublie_pas
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -25,6 +26,7 @@ class ModifierObjectif : AppCompatActivity(), OnButtonClickListener {
     private lateinit var buttonSauvegarder: Button
     private lateinit var buttonDelete: Button
     private lateinit var buttonToggleButton: Button
+    private lateinit var creationDate: TextView
     private var navigationHandler = NavigationHandler(this)
     private var Notif: Boolean = true
     private var StatusNotif: String = "actif"
@@ -78,16 +80,16 @@ class ModifierObjectif : AppCompatActivity(), OnButtonClickListener {
             if (Notif) {
                 StatusNotif = "no notif"
                 Notif = false
-                buttonToggleButton.backgroundTintList = ContextCompat.getColorStateList(this, R.color.red)
+                buttonToggleButton.backgroundTintList =
+                    ContextCompat.getColorStateList(this, R.color.red)
             } else {
                 StatusNotif = "actif"
                 Notif = true
-                buttonToggleButton.backgroundTintList = ContextCompat.getColorStateList(this, R.color.design_default_color_primary)
+                buttonToggleButton.backgroundTintList =
+                    ContextCompat.getColorStateList(this, R.color.design_default_color_primary)
             }
             println(Notif)
         }
-
-
     }
 
     fun dateMillisToString(millis: Long): String {
@@ -103,6 +105,8 @@ class ModifierObjectif : AppCompatActivity(), OnButtonClickListener {
                 editTextTitre.setText(it.titre)
                 editTextDescription.setText(it.description)
                 editTextDateHeure.setText(dateMillisToString(it.dateInMillis))
+                creationDate = findViewById(R.id.textView_DateCreation)
+                creationDate.setText(dateMillisToString(it.creationDateInMillis))
             }
         }
     }
